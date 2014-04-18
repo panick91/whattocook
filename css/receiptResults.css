@@ -1,0 +1,72 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.receipts {
+    margin: 40px 103px;
+}
+
+.receipts .receipt {
+    width: 25%;
+    height: 250px;
+    padding: 2px;
+    float: left;
+    overflow: hidden;
+}
+
+.receipts .receipt > div {
+    height: 100%;
+    overflow: hidden;
+    border: 5px solid #333;
+    border-color: hsla(0, 0%, 0%, 0.5);
+    background: url("../images/spaghetti Napoli.jpg") no-repeat center;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+.receipts .receipt img {
+    width: 100%;
+}
+
+.receipts .receipt.importance1 {
+    width: 50%;
+}
+
+@media (max-width: 1000px) {
+
+    .receipts .receipt {
+        width: 33%;
+    }
+
+    .receipts .receipt.importance1 {
+        width: 66%;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .receipts {
+        margin: 40px 20px;
+    }
+
+    .receipts .receipt {
+        width: 50%;
+    }
+
+    .receipts .receipt.importance1 {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .receipts .receipt {
+        width: 100%;
+    }
+    .receipts .receipt.importance1 {
+        width: 100%;
+    }
+}

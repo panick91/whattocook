@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link type="text/css" href="css/bootstrap/bootstrap.css" rel="stylesheet"/>
+    <link type="text/css" href="css/whattocook.css" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link type="text/css" href="css/receiptResults.css" rel="stylesheet"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap/bootstrap.js"></script>
+    <script src="js/mustache/mustache.js"></script>
+    <script src="js/masonry/masonry.pkgd.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">whattocook.ch</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Receipts by ingredients</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="background"></div>
+<div class="searchArea">
+    <div class="positionIndicator">
+        <div class="arrow">
+            <div class="arrowBody">
+                <label>1</label>
+            </div>
+        <div class="arrowHead"></div>
+        </div>
+        <!--<h2 class="advice">Enter the ingredients, you have:</h2>-->
+    </div>
+
+    <div class="searchContainer">
+        <div class="search">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group searchIngredients">
+                        <input type="text" class="form-control" placeholder="Search for ingredients" name="searchIngredients">
+                        <span class="input-group-btn">
+                            <button id="searchIngredientsButton" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown" id="ingredientsProposal">
+                <ul class="dropdown-menu" id="ingredientsDropdown">
+                </ul>
+            </div>
+        </div>
+        <div class="ingredients">
+            <div class="ingredientsHeaderArea">
+                <h4 id="ingredientsHeaderTitle">Your ingredients:</h4>
+            </div>
+            <ul id="ingredientList" class="list-group">
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="resultArea">
+    <div class="positionIndicator">
+        <div class="arrow">
+            <div class="arrowBody">
+                <label>2</label>
+            </div>
+            <div class="arrowHead"></div>
+        </div>
+        <!--<h2 class="advice">Enter the ingredients, you have:</h2>-->
+    </div>
+    <button type="button" class="btn btn-primary searchReceiptsButton">
+        Search receipts
+    </button>
+    <div class="receipts js-masonry"  data-masonry-options='{ }'>
+        <div class="receipt">
+            <div>
+                <!--<image src="images/spaghetti Napoli.jpg"></image>-->
+            </div>
+        </div>
+        <div class="receipt importance1">
+            <div>
+                <!--<image src="images/placeholder.jpg"></image>-->
+            </div>
+        </div>
+        <div class="receipt importance1">
+            <div>
+                <!--<image src="images/placeholder.jpg"></image>-->
+            </div>
+        </div>
+        <div class="receipt">
+            <div>
+                <!--<image src="images/placeholder.jpg"></image>-->
+            </div>
+        </div><div class="receipt">
+        <div>
+            <image src="images/placeholder.jpg"></image>
+        </div>
+    </div><div class="receipt">
+        <div>
+            <image src="images/placeholder.jpg"></image>
+        </div>
+    </div><div class="receipt">
+        <div>
+            <image src="images/placeholder.jpg"></image>
+        </div>
+    </div><div class="receipt">
+        <div>
+            <image src="images/placeholder.jpg"></image>
+        </div>
+    </div><div class="receipt">
+        <div>
+            <image src="images/placeholder.jpg"></image>
+        </div>
+    </div><div class="receipt">
+        <div>
+            <image src="images/placeholder.jpg"></image>
+        </div>
+    </div><div class="receipt">
+        <div>
+            <image src="images/placeholder.jpg"></image>
+        </div>
+    </div><div class="receipt">
+        <div>
+            <image src="images/placeholder.jpg"></image>
+        </div>
+    </div><div class="receipt">
+        <div>
+            <image src="images/placeholder.jpg"></image>
+        </div>
+    </div><div class="receipt">
+        <div>
+            <image src="images/placeholder.jpg"></image>
+        </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>
