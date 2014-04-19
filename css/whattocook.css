@@ -2,10 +2,13 @@
 html,body{
     height: 100%;
 }
+
+.navbar, .form-control,.ingredientName,.ingredientsHeaderArea,.arrow, .btn ,.receiptDetails{
+    font-family: 'Open Sans', sans-serif !important;
+}
 .background{
-    background-image:url("../images/Italy-cuisine.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
+    background:url("../images/Italy-cuisine.jpg") no-repeat center;;
+    background-size: cover;
     height:100%;
     width:100%;
     top: 20px;
