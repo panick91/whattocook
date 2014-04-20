@@ -117,7 +117,6 @@ html,body{
     width: 50%;
     display: inline-block;
     margin-left:15px;
-    max-height: 300px;
     vertical-align: top;
 }
 .ingredients  h4{
@@ -154,6 +153,11 @@ html,body{
     margin-left:15px;
     font-size: 18px;
 }
+.spinner{
+    position: relative !important;
+    top:40% !important;
+}
+
 @media (min-width: 1200px){
     .col-lg-6 {
          width: 100%;

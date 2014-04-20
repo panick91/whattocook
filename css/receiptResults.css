@@ -6,6 +6,23 @@
 
 .receipts {
     margin: 40px 103px;
+    height:auto !important;
+}
+
+.loadingBackground{
+    height: 200px;
+    width: 20%;
+    background-color: rgba(255, 255, 255, 0.9);
+    left:40%;
+    position: absolute;
+    text-align: center;
+}
+
+.loadingBackground span{
+    position: relative;
+    top:130px;
+    font-weight: bold;
+
 }
 
 .receipts .receipt {
@@ -22,12 +39,12 @@
     overflow: hidden;
     border: 5px solid #333;
     border-color: hsla(0, 0%, 0%, 0.5);
-    background: url("../images/spaghetti Napoli.jpg") no-repeat center;
+    background: no-repeat center;
     background-size: cover;
     border-radius: 5px;
 }
 
-.receipts .receipt.importance1 {
+.receipts .receipt.important {
     width: 50%;
 }
 
@@ -61,7 +78,7 @@
         width: 33%;
     }
 
-    .receipts .receipt.importance1 {
+    .receipts .receipt.important {
         width: 66%;
     }
 
@@ -76,7 +93,7 @@
         width: 50%;
     }
 
-    .receipts .receipt.importance1 {
+    .receipts .receipt.important {
         width: 100%;
     }
 
@@ -87,7 +104,7 @@
     .receipts .receipt {
         width: 100%;
     }
-    .receipts .receipt.importance1 {
+    .receipts .receipt.important {
         width: 100%;
     }
 }

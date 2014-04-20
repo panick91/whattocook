@@ -1,11 +1,27 @@
 <script id="receipt" type="text/html">
     {{#receipts}}
-    <li class="list-group-item">
-        <div class="ingredient">
-            <img class="ingredientPicture" src="images/{{source}}.jpg"/>
-            <span class="ingredientName">{{name}}</span>
-            <span class="glyphicon glyphicon-plus addIngredientToList"></span>
+    <div class="receipt {{additionalClass}}" >
+        <div style="background-image:url(images/{{receiptImage}}.jpg);">
+            <a href="{{receiptId}}">
+                <div class="receiptDetails" >
+                    <h2>{{receiptName}}</h2>
+                    <table>
+                        <tr>
+                            <td>Duration</td>
+                            <td>{{duration}}</td>
+                        </tr>
+                        <tr>
+                            <td>Difficulty</td>
+                            <td>{{difficulty}}</td>
+                        </tr>
+                        <tr>
+                            <td>Rating</td>
+                            <td>{{rating}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </a>
         </div>
-    </li>
-    {{/ingredients}}
+    </div>
+    {{/receipts}}
 </script> 
