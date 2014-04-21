@@ -8,7 +8,7 @@ var ingredientsCounter = 0;
 $(document).ready(function () {
 
 
-    $.get("getIngredients.php", addSearchResults);
+    $.get("php/getIngredients.php", addSearchResults);
 
     $('input[name=searchIngredients]').keyup(
         function () {
@@ -30,7 +30,7 @@ $(document).ready(function () {
     $('#searchReceiptsButton').click(
         function(){
             startSpinner('#receipts',true);
-            $.get("getReceipts.php",addReceiptResults);
+            $.get("php/getReceipts.php",addReceiptResults);
         }
     );
 
