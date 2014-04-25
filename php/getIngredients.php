@@ -6,24 +6,14 @@
  * Time: 18:09
  */
 
-    $result = array(
-        "ingredients" =>   array(
-            0 => array(
-                "name" => "leek",
-                "source" => "lauch"
-            ),
-            1 => array(
-                "name" => "tomato",
-                "source" => "tomate"
-            )
-        )
-    );
+    include 'Database\IngredientDatabase.php';
 
-    $ingredientsDB = new \whattocook\IngredientDatabase();
+    $ingredientsDB = new IngredientDatabase();
 
-    //$ingredientsDB.getIngredients();
+    $result = $ingredientsDB->getAllIngredientsArray('');
 
     $json = json_encode($result);
     header('Content-type: application/json');
     echo $json;
+
 ?>

@@ -6,24 +6,35 @@
  * Time: 20:36
  */
 
-namespace whattocook;
+class Ingredient implements JsonSerializable{
 
+    private $ingredientId;
+    private $label;
+    private $nutritionalValue;
+    private $imageNamePart;
 
-class Ingredient {
-
-    private $name;
-    private $source;
-
-    function __construct($name, $source){
-        $this->name = $name;
-        $this->source = $source;
+    function getIngredientId(){
+        return $this->ingredientId;
     }
 
-    function getName(){
-        return $this->name;
+    function getLabel(){
+        return $this->label;
     }
 
-    function getSource(){
-        return $this->source;
+    function getNutritionalValue(){
+        return $this->nutritionalValue;
+    }
+
+    function getImagePartName(){
+        return $this->imageNamePart;
+    }
+
+    public function jsonSerialize(){
+        return array(
+            'ingredientId' => $this->ingredientId,
+            'label' => $this->label,
+            'nutritionalValue' => $this->nutritionalValue,
+            'imageNamePart' => $this->imageNamePart
+        );
     }
 } 
