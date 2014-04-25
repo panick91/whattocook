@@ -10,10 +10,13 @@
 
     $ingredientsDB = new IngredientDatabase();
 
-    $result = $ingredientsDB->getAllIngredientsArray('');
+    $searchText = $_POST['searchText'];
 
-    $json = json_encode($result);
-    header('Content-type: application/json');
-    echo $json;
+    if(is_string($searchText)){
+        $result = $ingredientsDB->getAllIngredientsArray($searchText);
 
+        $json = json_encode($result);
+        header('Content-type: application/json');
+        echo $json;
+    }
 ?>

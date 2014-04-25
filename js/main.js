@@ -7,13 +7,12 @@ var ingredientsCounter = 0;
 
 $(document).ready(function () {
 
-
-    $.get("php/getIngredients.php", addSearchResults);
-
     $('input[name=searchIngredients]').keyup(
         function () {
-            if ($('input[name=searchIngredients]').val().length > 0)
+            if ($('input[name=searchIngredients]').val().length > 2){
+                searchIngredients();
                 $('#ingredientsProposal').addClass("open");
+            }
             else
                 $('#ingredientsProposal').removeClass("open");
             attachClickEventToDocument();
@@ -22,6 +21,7 @@ $(document).ready(function () {
     $('#searchIngredientsButton').click(
         function (event) {
             event.stopPropagation();
+            searchIngredients();
             $('#ingredientsProposal').toggleClass("open");
             attachClickEventToDocument();
         });
@@ -35,6 +35,17 @@ $(document).ready(function () {
     );
 
 });
+
+function searchIngredients(){
+    var searchString = $('input[name=searchIngredients]').val();
+    //$.get("php/getIngredients.php", addSearchResults);
+    $.post("php/getIngredients.php",
+    {
+        searchText : searchString
+    },
+    addSearchResults
+    );
+}
 
 function addReceiptResults(data){
     render('#receipts','mustache-templates/receipt.html','receipt',data,function(){});
@@ -94,6 +105,9 @@ function addIngredientToList(event) {
     var ingredientName = $(event.target).parent().find('.ingredientName').html();
     var ingredientPicture = $(event.target).parent().find('.ingredientPicture').attr('src');
     var newElement = "<li class='list-group-item'><div class='ingredient'><img class='ingredientPicture' src='" + ingredientPicture + "'/><span class='ingredientName'>" + ingredientName + "</span><span class='glyphicon glyphicon-minus removeIngredient'></span></div></li>";
+    if($('ul#ingredientList li').length === 1 && $('ul#ingredientList li div').hasClass("ingredientPlaceholder")){
+        $('#ingredientList').empty();
+    }
     $('#ingredientList').append(newElement);
     addClickEventToYourIngredients();
     $('#ingredientsHeaderTitle').html("Your ingredients: " + ++ingredientsCounter);
@@ -101,7 +115,14 @@ function addIngredientToList(event) {
 
 function removeIngredientFromList(event){
     $(event.target).parent().parent().remove();
+    if($('ul#ingredientList li').length === 0){
+        $('#ingredientList').append("<li class='list-group-item'><div class='ingredientPlaceholder'><span>No ingredients added yet!</span></div></li>");
+    }
     $('#ingredientsHeaderTitle').html("Your ingredients: " + (--ingredientsCounter));
+}
+
+function checkIfIngredientIsAlreadyInList(){
+
 }
 
 function startSpinner(element,start){
