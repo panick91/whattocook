@@ -3,6 +3,10 @@ html,body{
     height: 100%;
 }
 
+body{
+    padding-top: 100px;
+}
+
 .navbar, .form-control,.ingredientName,.ingredientsHeaderArea,.arrow, .btn ,.receiptDetails{
     font-family: 'Open Sans', sans-serif !important;
 }
@@ -57,7 +61,7 @@ html,body{
 /*Search area*/
 .searchArea{
     position:relative;
-    margin-top:100px;
+    /*margin-top:100px;*/
 }
 .searchContainer{
     padding-left:85px;
