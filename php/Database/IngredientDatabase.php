@@ -6,34 +6,30 @@
  * Time: 20:39
  */
 
+include 'Database.php';
 include 'Model\Ingredient.php';
 
 class IngredientDatabase {
 
-    private $hostname = "localhost";
-    private $username = "whattocookUser";
-    private $databaseName = "whattocook";
-    private $password = "wtc";
+
 
     private $db;
 
     function __construct() {
 
         try{
-            $this->db = new PDO("mysql:host=$this->hostname;dbname=$this->databaseName", $this->username, $this->password);
-            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            $this->db = Database::createDatabaseConnection();
         }
         catch(PDOException $e)
         {
-            //echo $e->getMessage();
+            echo $e->getMessage();
         }
     }
 
     function getAllIngredients(){
         try{
             /*** The SQL SELECT statement ***/
-            $sql = "SELECT * FROM ingredients";
+            $sql = "SELECT * FROM ingredients LIMIT 4";
 
             /*** fetch into an PDOStatement object ***/
             $stmt = $this->db->query($sql);

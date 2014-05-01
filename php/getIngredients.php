@@ -11,6 +11,9 @@
     $ingredientsDB = new IngredientDatabase();
 
     $searchText = $_POST['searchText'];
+    if($searchText === NULL){
+        $searchText = "";
+    }
 
     if(is_string($searchText)){
         $result = $ingredientsDB->getAllIngredientsArray($searchText);

@@ -6,7 +6,7 @@
  * Time: 21:40
  */
 
-$result = array(
+/*$result = array(
     "receipts" => array(
         0 => array(
             "receiptId" => "#",
@@ -117,9 +117,17 @@ $result = array(
             "additionalClass" => ""
         )
         )
-    );
+    );*/
+
+    include 'Database\ReceiptDatabase.php';
+
+    $ingredientsDB = new ReceiptDatabase();
+
+    $result = $ingredientsDB->getReceiptsArray();
 
     $json = json_encode($result);
     header('Content-type: application/json');
     echo $json;
+
+
 ?>
