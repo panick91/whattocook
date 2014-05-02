@@ -112,7 +112,7 @@ function addIngredientToList(event) {
     var ingredientId = ingredient.attr('data-ingredientid');
 
     //add to current ingredient list
-    var newElement = "<li class='list-group-item'><div class='ingredient'><img class='ingredientPicture' src='" + ingredientPicture + "'/><span class='ingredientName'>" + ingredientName + "</span><span class='glyphicon glyphicon-minus removeIngredient'></span></div></li>";
+    var newElement = "<li class='list-group-item'><div class='ingredient' data-ingredientid='" + ingredientId +"'><img class='ingredientPicture' src='" + ingredientPicture + "'/><span class='ingredientName'>" + ingredientName + "</span><span class='glyphicon glyphicon-minus removeIngredient'></span></div></li>";
     if($('ul#ingredientList li').length === 1 && $('ul#ingredientList li div').hasClass("ingredientPlaceholder")){
         $('#ingredientList').empty();
     }
@@ -129,15 +129,18 @@ function addIngredientToList(event) {
 }
 
 function removeIngredientFromList(event){
+    var ingredientId = $(event.target).parent().attr('data-ingredientid');
+    var index = yourIngredients.indexOf(ingredientId);
+
+    if(index > -1){
+        yourIngredients.splice(index,1);
+    }
+
     $(event.target).parent().parent().remove();
     if($('ul#ingredientList li').length === 0){
         $('#ingredientList').append("<li class='list-group-item'><div class='ingredientPlaceholder'><span>No ingredients added yet!</span></div></li>");
     }
     $('#ingredientsHeaderTitle').html("Your ingredients: " + (--ingredientsCounter));
-}
-
-function checkIfIngredientIsAlreadyInList(){
-
 }
 
 function startSpinner(element,start){
