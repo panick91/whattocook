@@ -1,7 +1,7 @@
 <script id="ingredient" type="text/html">
     {{#ingredients}}
         <li class="list-group-item">
-            <div class="ingredient">
+            <div class="ingredient" data-ingredientid="{{ingredientId}}">
                 <img class="ingredientPicture" src="images/{{imageNamePart}}.jpg" />
                 <span class="ingredientName">{{label}}</span>
                 <span class="glyphicon glyphicon-plus addIngredientToList"></span>

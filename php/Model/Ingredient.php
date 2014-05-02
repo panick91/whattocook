@@ -17,7 +17,7 @@ class Ingredient implements JsonSerializable{
         return $this->ingredientId;
     }
 
-    function getLabel(){
+    public function getLabel(){
         return $this->label;
     }
 

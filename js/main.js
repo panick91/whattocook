@@ -4,6 +4,7 @@
 
 
 var ingredientsCounter = 0;
+var yourIngredients = [];
 
 $(document).ready(function () {
 
@@ -37,12 +38,13 @@ $(document).ready(function () {
 });
 
 function searchIngredients(){
-    var searchString = $('input[name=searchIngredients]').val();
-    //$.get("php/getIngredients.php", addSearchResults);
+    //var searchString = $('input[name=searchIngredients]').val();
+    var parameters = {
+        searchText: $('input[name=searchIngredients]').val(),
+        ingredients: yourIngredients
+    }
     $.post("php/getIngredients.php",
-    {
-        searchText : searchString
-    },
+    parameters,
     addSearchResults
     );
 }
@@ -102,15 +104,28 @@ function attachClickEventToDocument(){
 }
 
 function addIngredientToList(event) {
-    var ingredientName = $(event.target).parent().find('.ingredientName').html();
-    var ingredientPicture = $(event.target).parent().find('.ingredientPicture').attr('src');
+    var ingredient = $(event.target).parent();
+
+    //get data
+    var ingredientName = ingredient.find('.ingredientName').html();
+    var ingredientPicture = ingredient.find('.ingredientPicture').attr('src');
+    var ingredientId = ingredient.attr('data-ingredientid');
+
+    //add to current ingredient list
     var newElement = "<li class='list-group-item'><div class='ingredient'><img class='ingredientPicture' src='" + ingredientPicture + "'/><span class='ingredientName'>" + ingredientName + "</span><span class='glyphicon glyphicon-minus removeIngredient'></span></div></li>";
     if($('ul#ingredientList li').length === 1 && $('ul#ingredientList li div').hasClass("ingredientPlaceholder")){
         $('#ingredientList').empty();
     }
     $('#ingredientList').append(newElement);
+    yourIngredients.push(ingredientId);
+
     addClickEventToYourIngredients();
+
+    //update counter
     $('#ingredientsHeaderTitle').html("Your ingredients: " + ++ingredientsCounter);
+
+    //remove selected ingredient
+    $(event.target).parent().parent().remove();
 }
 
 function removeIngredientFromList(event){

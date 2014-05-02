@@ -46,7 +46,7 @@ class IngredientDatabase {
     function getSpecificIngredients($searchString){
         try{
             /*** The SQL SELECT statement ***/
-            $sql = "SELECT * FROM ingredients i WHERE i.label LIKE concat('%','" . $searchString . "','%')";
+            $sql = "SELECT * FROM ingredients i WHERE i.label LIKE concat('%','" . $searchString . "','%') ORDER BY i.label";
 
             /*** fetch into an PDOStatement object ***/
             $stmt = $this->db->query($sql);
