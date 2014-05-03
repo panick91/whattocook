@@ -72,6 +72,15 @@
     margin:10px 0;
 }
 
+.receiptDetails span{
+    
+}
+
+.tableHeader{
+    width: 80px;
+    height: 1.8em;
+}
+
 @media (max-width: 1000px) {
 
     .receipts .receipt {

@@ -6,17 +6,23 @@
  * Time: 21:40
  */
 
-    include 'Database\ReceiptDatabase.php';
+include 'Database\ReceiptDatabase.php';
 
-    $ingredientsDB = new ReceiptDatabase();
+$receiptDB = new ReceiptDatabase();
 
-    $result = $ingredientsDB->getReceiptsArray();
+$yourIngredients = null;
+if (array_key_exists('ingredients', $_POST)) {
+    $yourIngredients = $_POST['ingredients'];
+}
+//$yourIngredients = [2,4];
 
-    $ingredientsDB->getReceiptsByIngredients(array(1,2,3));
+$result = $receiptDB->getReceiptsByIngredients($yourIngredients);
+$result = $receiptDB->getReceiptsArray($result);
 
-    $json = json_encode($result);
-    header('Content-type: application/json');
-    echo $json;
+
+$json = json_encode($result);
+header('Content-type: application/json');
+echo $json;
 
 
 ?>

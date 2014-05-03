@@ -31,18 +31,27 @@ $(document).ready(function () {
     $('#searchReceiptsButton').click(
         function(){
             startSpinner('#receipts',true);
-            $.get("php/getReceipts.php",addReceiptResults);
+            searchReceipts();
         }
     );
 
 });
+
+function searchReceipts(){
+    var parameters = {
+        ingredients: yourIngredients
+    };
+    $.post("php/getReceipts.php",
+    parameters,
+    addReceiptResults);
+}
 
 function searchIngredients(){
     //var searchString = $('input[name=searchIngredients]').val();
     var parameters = {
         searchText: $('input[name=searchIngredients]').val(),
         ingredients: yourIngredients
-    }
+    };
     $.post("php/getIngredients.php",
     parameters,
     addSearchResults

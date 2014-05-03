@@ -12,8 +12,9 @@ class Receipt implements JsonSerializable{
     private $name;
     private $instructions;
     private $difficulty;
+    private $duration;
     private $imagePartName;
-
+    private $score;
 
     /**
      * @return mixed
@@ -21,14 +22,6 @@ class Receipt implements JsonSerializable{
     public function getReceiptId()
     {
         return $this->receiptId;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDifficulty()
-    {
-        return $this->difficulty;
     }
 
     /**
@@ -48,6 +41,22 @@ class Receipt implements JsonSerializable{
     }
 
     /**
+     * @return mixed
+     */
+    public function getDurration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDifficulty()
+    {
+        return $this->difficulty;
+    }
+
+    /**
      * @return string
      */
     public function getImagePartName()
@@ -55,6 +64,13 @@ class Receipt implements JsonSerializable{
         return $this->imagePartName;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
 
     /**
      * (PHP 5 &gt;= 5.4.0)<br/>
@@ -70,7 +86,9 @@ class Receipt implements JsonSerializable{
             'name' => $this->name,
             'instructions' => $this->instructions,
             'difficulty' => $this->difficulty,
-            'imagePartName' => $this->imagePartName
+            'duration' => $this->duration,
+            'imagePartName' => $this->imagePartName,
+            'score' => $this->score
         );
     }
 }

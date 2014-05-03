@@ -68,15 +68,11 @@ class IngredientDatabase {
         }
     }
 
-    function getAllIngredientsArray($searchString){
-        if($searchString == ""){
+    function getIngredientsArray($ingredientsArray){
+
             return array(
-                "ingredients" => $this->getAllIngredients());
-        }
-        else{
-            return array(
-                "ingredients" => $this->getSpecificIngredients($searchString));
-        }
+                "ingredients" => $ingredientsArray
+            );
 
     }
 } 

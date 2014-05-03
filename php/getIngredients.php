@@ -10,22 +10,32 @@ include 'Database\IngredientDatabase.php';
 
 $ingredientsDB = new IngredientDatabase();
 
-$searchText = $_POST['searchText'];
-
 $yourIngredients = null;
 if (array_key_exists('ingredients', $_POST)) {
     $yourIngredients = $_POST['ingredients'];
 }
 
+$searchText = $_POST['searchText'];
 if ($searchText === NULL) {
     $searchText = "";
 }
 
 if (is_string($searchText)) {
-    $result = $ingredientsDB->getAllIngredientsArray($searchText);
+    /*** get ingredients ***/
+    if($searchText == ""){
+        $result = $ingredientsDB->getAllIngredients();
+    }
+    else{
+        $result = $ingredientsDB->getSpecificIngredients($searchText);
+    }
 
+    /*** push into necessary array structure ***/
+    $result = $ingredientsDB->getIngredientsArray($result);
+
+    /*** filter ingredients (remove already chosen ingredients) ***/
     $result = filterIngredients($yourIngredients, $result);
 
+    /*** create JSON and return to caller ***/
     $json = json_encode($result);
     header('Content-type: application/json');
     echo $json;
