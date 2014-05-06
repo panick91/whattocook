@@ -1,0 +1,293 @@
+/* =====================================================
+    Position indication
+   ===================================================== */
+.positionIndicator{
+    margin-bottom: 10px;
+}
+.arrow{
+    float:left;
+}
+.arrow > .arrowBody{
+    display: inline-block;
+    height:60px;
+    width:60px;
+    margin:0px;
+    background-color: #333;
+}
+.arrow > .arrowBody > label{
+    margin:10px 0px 0px 20px;
+    float:left;
+    font-weight: bold;
+    font-size:30px;
+    color:white;
+}
+.arrow > .arrowHead{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left:-4px;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 30px solid #333;
+}
+
+
+/* =====================================================
+    Search area
+   ===================================================== */
+.searchArea{
+    position:relative;
+    /*margin-top:100px;*/
+}
+.searchContainer{
+    padding-left:85px;
+}
+
+.search{
+    display: inline-block;
+    width: 40%;
+    height: 200px;
+    margin-top:8px;
+}
+.row{
+    margin:0px;
+}
+.searchIngredients{
+    /*width:80% !important;*/
+}
+.searchIngredients input, .searchIngredients button{
+    height:45px;
+}
+.glyphicon-search{
+    font-size: 20px;
+}
+
+/* =====================================================
+    proposal dropdown
+   ===================================================== */
+.dropdown{
+    margin-left:15px;
+}
+.dropdown ul{
+    width:100%;
+    padding:0px 60px 0px 0px;
+    background-color: transparent;
+    border:none;
+    box-shadow: none;
+}
+
+/* =====================================================
+    ingredients
+   ===================================================== */
+.ingredient .glyphicon {
+    float:right;
+    padding-top:12px;
+    margin-right:-5px;
+    height: 40px;
+    width:  40px;
+}
+.ingredient .glyphicon:before {
+    margin-left: 20px;
+}
+.list-group-item:hover .glyphicon {
+    opacity: 0.5;
+}
+.ingredientPicture{
+    width:40px;
+    height: 40px;
+}
+.ingredientName{
+    margin-left: 3px;
+}
+.ingredients{
+    width: 50%;
+    display: inline-block;
+    margin-left:15px;
+    vertical-align: top;
+}
+.ingredientPlaceholder{
+    line-height: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+.ingredients  h4{
+    margin:0px;
+}
+.ingredientsHeaderArea{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+    padding-top: 12px;
+    background-color:rgba(51,51,51,0.8);
+    /*background-color:#428bca;*/
+    border-color: #357ebd;
+    border-radius:5px;
+    color:white;
+    height: 42px;
+}
+#ingredientList > li{
+    padding-top:2px;
+    padding-bottom:2px;
+}
+.list-group{
+    margin-bottom: 0px;
+}
+
+/* =====================================================
+    receipt.css result area
+   ===================================================== */
+.resultArea{
+    position: relative;
+    margin-top:50px;
+}
+.searchReceiptsButton{
+    width: 300px;
+    height:60px;
+    margin-left:15px;
+    font-size: 18px;
+}
+.receipts {
+    margin: 40px 103px;
+    height:auto !important;
+}
+
+
+/* =====================================================
+    receipt.css
+   ===================================================== */
+.receipts .receipt {
+    width: 25%;
+    height: 300px;
+    padding: 2px;
+    float: left;
+    overflow: hidden;
+}
+
+.receipts .receipt > div {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border: 5px solid #333;
+    border-color: hsla(0, 0%, 0%, 0.5);
+    background: no-repeat center;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+.receipts .receipt.important {
+    width: 50%;
+}
+
+.receipt:hover .receiptDetails{
+    height: 100%;
+}
+
+
+/* =====================================================
+    receipt.css details
+   ===================================================== */
+.receiptDetails{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(255,255,255,0.7);
+    color:rgb(51, 51, 51);
+    padding-left: 20px;
+    -webkit-transition: height 0.35s ease-in-out;
+    -moz-transition: height 0.35s ease-in-out;
+    -ms-transition: height 0.35s ease-in-out;
+    -o-transition: height 0.35s ease-in-out;
+    transition: height 0.35s ease-in-out;
+}
+
+.receiptDetails h2{
+    font-size: 2em;
+    margin:10px 0;
+}
+
+.tableHeader{
+    width: 80px;
+    height: 1.8em;
+}
+
+
+/* =====================================================
+    responsiveness stuff
+   ===================================================== */
+@media (max-width: 1000px) {
+
+    .receipts .receipt {
+        width: 33%;
+    }
+
+    .receipts .receipt.important {
+        width: 66%;
+    }
+
+}
+@media (max-width: 900px){
+    .search{
+        width:80%;
+    }
+    .ingredients{
+        margin-top: 30px;
+        padding-right: 30px;
+        width: 80%;
+    }
+}
+@media (max-width: 800px) {
+    .receipts {
+        margin: 40px 20px;
+    }
+
+    .receipts .receipt {
+        width: 50%;
+    }
+
+    .receipts .receipt.important {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 600px){
+    .searchContainer{
+        padding-left:30px;
+    }
+    .search{
+        width:100%;
+    }
+    .ingredients{
+        width: 96%;
+        padding-right: 15px;
+    }
+    .arrow > .arrowBody{
+        height:40px;
+        width:20px;
+    }
+    .arrow > .arrowBody > label{
+        margin:5px 0px 0px 7px;
+        font-size:20px;
+    }
+    .arrow > .arrowHead{
+        width: 0;
+        height: 0;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        border-left: 20px solid #333;
+    }
+    .advice{
+        margin-top:10px;
+        font-size: 1.5em;
+    }
+}
+@media (max-width: 500px) {
+
+    .receipts .receipt {
+        width: 100%;
+    }
+    .receipts .receipt.important {
+        width: 100%;
+    }
+}

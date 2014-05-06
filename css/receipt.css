@@ -1,0 +1,32 @@
+/* =====================================================
+    Title
+   ===================================================== */
+.receiptContainer{
+    position:relative;
+}
+.title{
+    float:left;
+}
+.titleArrowBody{
+    display: inline-block;
+    height:60px;
+    width:300px;
+    margin:0px;
+    background-color: #333;
+}
+.titleArrowBody label{
+    margin:10px 0px 0px 20px;
+    float:left;
+    font-weight: bold;
+    font-size:30px;
+    color:white;
+}
+.titleArrowHead{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left:-4px;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 30px solid #333;
+}

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2091272461">
-    <data-source source="LOCAL" name="MySQL - whattocook@localhost" uuid="00b28b56-77da-4946-9936-bc980f799e5e">
+  <component name="DataSourceManagerImpl" format="xml" hash="3968900858">
+    <data-source source="LOCAL" name="MySQL - whattocook@localhost" uuid="e3acc0ab-75e3-460b-9506-caab6fa0b47d">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/whattocook</jdbc-url>
       <user-name>root</user-name>
+      <schema-pattern>whattocook.*</schema-pattern>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />

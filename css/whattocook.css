@@ -1,4 +1,12 @@
-/*General*/
+/* =====================================================
+    general styles
+   ===================================================== */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 html,body{
     height: 100%;
 }
@@ -7,9 +15,16 @@ body{
     padding-top: 100px;
 }
 
+/* =====================================================
+    custom navigation styles (otherwise Bootstrap standard)
+   ===================================================== */
 .navbar, .form-control,.ingredientName,.ingredientsHeaderArea,.arrow, .btn ,.receiptDetails{
     font-family: 'Open Sans', sans-serif !important;
 }
+
+/* =====================================================
+    background
+   ===================================================== */
 .background{
     background:url("../images/Italy-cuisine.jpg") no-repeat center;;
     background-size: cover;
@@ -20,153 +35,33 @@ body{
     position: fixed;
 }
 
-
-/*Position indication*/
-.positionIndicator{
-    margin-bottom: 10px;
-}
-.arrow{
-    float:left;
-}
-.arrow > .arrowBody{
-    display: inline-block;
-    height:60px;
-    width:60px;
-    margin:0px;
-    background-color: #333;
-}
-.arrow > .arrowBody > label{
-    margin:10px 0px 0px 20px;
-    float:left;
-    font-weight: bold;
-    font-size:30px;
-    color:white;
-}
-.arrow > .arrowHead{
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-left:-4px;
-    border-top: 30px solid transparent;
-    border-bottom: 30px solid transparent;
-    border-left: 30px solid #333;
-}
-.advice{
-    display:inline-block;
-    margin-top:15px;
-    margin-left:10px;
-}
-
-
-/*Search area*/
-.searchArea{
-    position:relative;
-    /*margin-top:100px;*/
-}
-.searchContainer{
-    padding-left:85px;
-}
-
-.search{
-    display: inline-block;
-    width: 40%;
-    height: 200px;
-    margin-top:8px;
-}
-.row{
-    margin:0px;
-}
-.searchIngredients{
-    /*width:80% !important;*/
-}
-.searchIngredients input, .searchIngredients button{
-    height:45px;
-}
-.glyphicon-search{
-    font-size: 20px;
-}
-.dropdown{
-    margin-left:15px;
-}
-.dropdown ul{
-    width:100%;
-    padding:0px 60px 0px 0px;
-    background-color: transparent;
-    border:none;
-    box-shadow: none;
-}
-.ingredient{
-}
-.ingredient .glyphicon {
-    float:right;
-    padding-top:12px;
-    margin-right:-5px;
-    height: 40px;
-    width:  40px;
-}
-.ingredient .glyphicon:before {
-    margin-left: 20px;
-}
-.list-group-item:hover .glyphicon {
-    opacity: 0.5;
-}
-.ingredientPicture{
-    width:40px;
-    height: 40px;
-}
-.ingredientName{
-    margin-left: 3px;
-}
-.ingredients{
-    width: 50%;
-    display: inline-block;
-    margin-left:15px;
-    vertical-align: top;
-}
-.ingredientPlaceholder{
-    line-height: 40px;
-    text-align: center;
-    font-weight: bold;
-}
-.ingredients  h4{
-    margin:0px;
-}
-.ingredientsHeaderArea{
-    margin-top: 10px;
-    margin-bottom: 5px;
-    text-align: center;
-    padding-top: 12px;
-    background-color:rgba(51,51,51,0.8);
-    /*background-color:#428bca;*/
-    border-color: #357ebd;
-    border-radius:5px;
-    color:white;
-    height: 42px;
-}
-#ingredientList > li{
-    padding-top:2px;
-    padding-bottom:2px;
-}
-.list-group{
-    margin-bottom: 0px;
-}
-
-/* receipt result area*/
-.resultArea{
-    position: relative;
-    margin-top:50px;
-}
-.searchReceiptsButton{
-    width: 300px;
-    height:60px;
-    margin-left:15px;
-    font-size: 18px;
-}
+/* =====================================================
+    loading indicator
+   ===================================================== */
 .spinner{
     position: relative !important;
     top:40% !important;
 }
 
+.loadingBackground{
+    height: 200px;
+    width: 20%;
+    background-color: rgba(255, 255, 255, 0.9);
+    left:40%;
+    position: absolute;
+    text-align: center;
+}
+
+.loadingBackground span{
+    position: relative;
+    top:130px;
+    font-weight: bold;
+
+}
+
+/* =====================================================
+    responsiveness stuff
+   ===================================================== */
 @media (min-width: 1200px){
     .col-lg-6 {
          width: 100%;
@@ -175,49 +70,5 @@ body{
 @media (max-width: 900px){
     .background{
         background-size: 150%;
-    }
-    .search{
-        width:80%;
-    }
-    .ingredients{
-        margin-top: 30px;
-        padding-right: 30px;
-        width: 80%;
-    }
-}
-
-@media (max-width: 700px){
-
-}
-
-@media (max-width: 600px){
-   .searchContainer{
-       padding-left:30px;
-   }
-    .search{
-        width:100%;
-    }
-    .ingredients{
-        width: 96%;
-        padding-right: 15px;
-    }
-    .arrow > .arrowBody{
-        height:40px;
-        width:20px;
-     }
-    .arrow > .arrowBody > label{
-        margin:5px 0px 0px 7px;
-        font-size:20px;
-    }
-    .arrow > .arrowHead{
-        width: 0;
-        height: 0;
-        border-top: 20px solid transparent;
-        border-bottom: 20px solid transparent;
-        border-left: 20px solid #333;
-    }
-    .advice{
-        margin-top:10px;
-        font-size: 1.5em;
     }
 }

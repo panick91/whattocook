@@ -9,13 +9,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <?php require_once 'shared/references.php' ?>
+    <title>whattocook.ch - Search by ingredients</title>
+
+    <!-- Include global stylesheets and scripts -->
+    <?php require_once '/views/shared/references.php'; ?>
+
+    <!-- local stylesheets and scripts -->
+    <link type="text/css" href="css/search.css" rel="stylesheet"/>
+    <script src="js/main.js"></script>
+    <script src="js/masonry/masonry.pkgd.js"></script>
+    <script src="js/spin/spin.min.js"></script>
+    <script src="js/spin/spin_jquery.js"></script>
 </head>
 <body>
 
-<?php require_once 'shared/navigation.php'
-?>
+<?php require_once '/views/shared/navigation.php';?>
 
 <div class="background"></div>
 <div class="searchArea">
@@ -69,7 +77,6 @@
             </div>
             <div class="arrowHead"></div>
         </div>
-        <!--<h2 class="advice">Enter the ingredients, you have:</h2>-->
     </div>
     <button type="button" class="btn btn-primary searchReceiptsButton" id="searchReceiptsButton">
         Search receipts
