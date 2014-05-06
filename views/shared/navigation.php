@@ -4,7 +4,7 @@
  * User: patrick
  * Date: 06.05.14
  * Time: 22:31
- */?>s
+ */?>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
