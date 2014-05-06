@@ -7,8 +7,8 @@
  */
 
 
-include 'Database.php';
-include 'Model\Receipt.php';
+require_once 'Database.php';
+require_once 'Model\Receipt.php';
 
 class ReceiptDatabase
 {

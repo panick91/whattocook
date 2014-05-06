@@ -6,8 +6,8 @@
  * Time: 20:39
  */
 
-include 'Database.php';
-include 'Model\Ingredient.php';
+require_once 'Database.php';
+require_once 'Model\Ingredient.php';
 
 class IngredientDatabase {
 

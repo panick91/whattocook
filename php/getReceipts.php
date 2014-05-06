@@ -6,7 +6,7 @@
  * Time: 21:40
  */
 
-include 'Database\ReceiptDatabase.php';
+require_once 'Database\ReceiptDatabase.php';
 
 $receiptDB = new ReceiptDatabase();
 

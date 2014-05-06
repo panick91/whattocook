@@ -6,7 +6,7 @@
  * Time: 18:09
  */
 
-include 'Database\IngredientDatabase.php';
+require_once 'Database\IngredientDatabase.php';
 
 $ingredientsDB = new IngredientDatabase();
 
