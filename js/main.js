@@ -41,7 +41,7 @@ function searchReceipts(){
     var parameters = {
         ingredients: yourIngredients
     };
-    $.post("php/getReceipts.php",
+    $.post("/whattocook/php/getReceipts.php",
     parameters,
     addReceiptResults);
 }
@@ -52,18 +52,29 @@ function searchIngredients(){
         searchText: $('input[name=searchIngredients]').val(),
         ingredients: yourIngredients
     };
-    $.post("php/getIngredients.php",
+    $.post("/whattocook/php/getIngredients.php",
     parameters,
     addSearchResults
     );
 }
 
 function addReceiptResults(data){
-    render('#receipts','mustache-templates/receipt.html','receipt',data,function(){});
+    render('#receipts','/whattocook/mustache-templates/receipt.html','receipt',data,function(){});
 }
 
 function addSearchResults(data) {
-    render("#ingredientsDropdown", 'mustache-templates/ingredient.html', 'ingredient', data, addClickEventToSearchResults);
+    if(data.ingredients.length > 0){
+        render("#ingredientsDropdown", '/whattocook/mustache-templates/ingredient.html', 'ingredient', data, addClickEventToSearchResults);
+    }
+    else{
+        var placeholderElement =    "<li class='list-group-item'>" +
+                                        "<div class='ingredient'>" +
+                                            "<span class='ingredientName'>No ingredients found.</span>" +
+                                        "</div>" +
+                                    "</li>";
+
+        $('#ingredientsDropdown').html(placeholderElement);
+    }
 }
 
 /*Mustache render function*/
@@ -121,7 +132,14 @@ function addIngredientToList(event) {
     var ingredientId = ingredient.attr('data-ingredientid');
 
     //add to current ingredient list
-    var newElement = "<li class='list-group-item'><div class='ingredient' data-ingredientid='" + ingredientId +"'><img class='ingredientPicture' src='" + ingredientPicture + "'/><span class='ingredientName'>" + ingredientName + "</span><span class='glyphicon glyphicon-minus removeIngredient'></span></div></li>";
+    var newElement =    "<li class='list-group-item'>" +
+                            "<div class='ingredient' data-ingredientid='" + ingredientId +"'>" +
+                                "<img class='ingredientPicture' src='" + ingredientPicture + "'/>" +
+                                "<span class='ingredientName'>" + ingredientName + "</span>" +
+                                "<span class='glyphicon glyphicon-minus removeIngredient'></span>" +
+                            "</div>" +
+                        "</li>";
+
     if($('ul#ingredientList li').length === 1 && $('ul#ingredientList li div').hasClass("ingredientPlaceholder")){
         $('#ingredientList').empty();
     }
@@ -147,14 +165,23 @@ function removeIngredientFromList(event){
 
     $(event.target).parent().parent().remove();
     if($('ul#ingredientList li').length === 0){
-        $('#ingredientList').append("<li class='list-group-item'><div class='ingredientPlaceholder'><span>No ingredients added yet!</span></div></li>");
+
+        var element =   "<li class='list-group-item'>" +
+                            "<div class='ingredientPlaceholder'>" +
+                                "<span>No ingredients added yet!</span>" +
+                            "</div>" +
+                        "</li>";
+
+        $('#ingredientList').append(element);
     }
     $('#ingredientsHeaderTitle').html("Your ingredients: " + (--ingredientsCounter));
 }
 
 function startSpinner(element,start){
     var parentElement = $(element);
-    var loadingBackground = "<div class='loadingBackground'><span>loading...</span></div>";
+    var loadingBackground = "<div class='loadingBackground'>" +
+                                "<span>loading...</span>" +
+                            "</div>";
     if(start){
         parentElement.append(loadingBackground);
         $('.loadingBackground').spin('large');

@@ -14,7 +14,6 @@ $yourIngredients = null;
 if (array_key_exists('ingredients', $_POST)) {
     $yourIngredients = $_POST['ingredients'];
 }
-//$yourIngredients = [2,4];
 
 $result = $receiptDB->getReceiptsByIngredients($yourIngredients);
 $result = $receiptDB->getReceiptsArray($result);
