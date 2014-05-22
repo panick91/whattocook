@@ -2,9 +2,9 @@ CREATE DATABASE  IF NOT EXISTS `whattocook` /*!40100 DEFAULT CHARACTER SET latin
 USE `whattocook`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 127.0.0.1    Database: whattocook
+-- Host: localhost    Database: whattocook
 -- ------------------------------------------------------
--- Server version	5.6.12-log
+-- Server version	5.5.24-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -41,6 +41,33 @@ LOCK TABLES `ingredients` WRITE;
 /*!40000 ALTER TABLE `ingredients` DISABLE KEYS */;
 INSERT INTO `ingredients` VALUES (1,'Leek','no data','lauch'),(2,'Tomato','no data','tomate'),(3,'Cheese','no data','Placeholder'),(4,'Spaghetti','no data','Placeholder'),(5,'Whitebread','no data','Placeholder'),(6,'Iceberg salad','no data','Placeholder'),(7,'Salami','no data','Placeholder'),(8,'Angus Steak','no data','Placeholder'),(9,'T-Bone Steak','no data','Placeholder'),(10,'Rice','no data','Placeholder'),(11,'Basmati-Rice','no data','Placeholder'),(12,'Basil','no data','Placeholder'),(13,'Lasagna sheets','no data','Placeholder'),(14,'Beef','no data','Placeholder');
 /*!40000 ALTER TABLE `ingredients` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ratings`
+--
+
+DROP TABLE IF EXISTS `ratings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ratings` (
+  `ratingsId` int(11) NOT NULL AUTO_INCREMENT,
+  `rating` int(11) NOT NULL,
+  `receiptId` int(11) NOT NULL,
+  PRIMARY KEY (`ratingsId`),
+  KEY `fk_receipt_rating_idx` (`receiptId`),
+  CONSTRAINT `fk_receipt_rating` FOREIGN KEY (`receiptId`) REFERENCES `receipts` (`receiptId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ratings`
+--
+
+LOCK TABLES `ratings` WRITE;
+/*!40000 ALTER TABLE `ratings` DISABLE KEYS */;
+INSERT INTO `ratings` VALUES (1,3,2),(2,3,2),(3,3,2),(4,3,2),(5,3,2),(6,3,2),(7,3,2);
+/*!40000 ALTER TABLE `ratings` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -109,4 +136,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-03 16:26:46
+-- Dump completed on 2014-05-22 22:31:36
