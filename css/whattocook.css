@@ -18,7 +18,7 @@ body{
 /* =====================================================
     custom navigation styles (otherwise Bootstrap standard)
    ===================================================== */
-.navbar, .form-control,.ingredientName,.ingredientsHeaderArea,.arrow, .btn ,.receiptDetails{
+.navbar, .form-control,.ingredientName,.ingredientsHeaderArea,.arrow, .btn ,.receiptDetails, .receiptDetails{
     font-family: 'Open Sans', sans-serif !important;
 }
 

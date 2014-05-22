@@ -11,11 +11,15 @@ require_once 'Database\IngredientDatabase.php';
 $ingredientsDB = new IngredientDatabase();
 
 $yourIngredients = null;
+$searchText = null;
 if (array_key_exists('ingredients', $_POST)) {
     $yourIngredients = $_POST['ingredients'];
 }
 
-$searchText = $_POST['searchText'];
+if(array_key_exists('searchText', $_POST)){
+    $searchText = $_POST['searchText'];
+}
+
 if ($searchText === NULL) {
     $searchText = "";
 }

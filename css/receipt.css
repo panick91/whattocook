@@ -119,10 +119,15 @@
 /* =====================================================
     Image
    ===================================================== */
-.receiptImage{
+.receiptProperties{
     display: inline-block;
     vertical-align: top;
     margin-left: 80px;
+}
+.receiptImage{
+    height: 30em;
+    border: 7px solid #333;;
+    border-radius: 5px;
 }
 
 
@@ -134,4 +139,6 @@
 .receiptDescription{
     display: inline-block;
     vertical-align: top;
+    max-width: 60%;
+    padding: 0 20px;
 }

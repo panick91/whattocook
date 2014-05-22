@@ -1,9 +1,9 @@
 <script id="receipt" type="text/html">
     {{#receipts}}
-    <div class="receipt {{additionalClass}}" >
-        <div style="background-image:url('/whattocook/images/{{imagePartName}}.jpg');">
-            <a href="?receiptId={{receiptId}}">
-                <div class="receiptDetails" >
+    <div class="receipt {{additionalClass}}">
+        <a href="?receiptId={{receiptId}}">
+            <div style="background-image:url('/whattocook/images/{{imagePartName}}.jpg');">
+                <div class="receiptDetails">
                     <h2>{{name}}</h2>
                     <table>
                         <tr>
@@ -20,8 +20,8 @@
                         </tr>
                     </table>
                 </div>
-            </a>
-        </div>
+            </div>
+        </a>
     </div>
     {{/receipts}}
 </script> 
