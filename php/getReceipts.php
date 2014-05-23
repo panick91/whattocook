@@ -6,7 +6,7 @@
  * Time: 21:40
  */
 
-require_once 'Database\ReceiptDatabase.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'\php\Database\ReceiptDatabase.php';
 
 $receiptDB = new ReceiptDatabase();
 
@@ -23,5 +23,3 @@ $json = json_encode($result);
 header('Content-type: application/json');
 echo $json;
 
-
-?>

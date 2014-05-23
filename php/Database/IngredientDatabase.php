@@ -6,8 +6,8 @@
  * Time: 20:39
  */
 
-require_once 'Database.php';
-require_once 'Model\Ingredient.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'\php\Database\Database.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'\php\Model\Ingredient.php';
 
 class IngredientDatabase {
 
@@ -34,7 +34,7 @@ class IngredientDatabase {
                                         LIMIT 4");
 
             /*** execution ***/
-            if($stmt->execute(array())){
+            if($stmt->execute()){
                 /*** fetch into class Ingredient ***/
                 return $stmt->fetchALL(PDO::FETCH_CLASS, 'Ingredient');
             }

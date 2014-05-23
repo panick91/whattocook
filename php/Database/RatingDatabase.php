@@ -7,7 +7,7 @@
  */
 
 
-require_once 'Database.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'\php\Database\Database.php';
 
 class RatingDatabase
 {

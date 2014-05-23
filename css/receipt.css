@@ -45,12 +45,20 @@
     border-bottom: 30px solid transparent;
     border-left: 30px solid #333;
 }
+@media screen and (max-width: 640px){
+    .titleArrow{
+        width:100%;
+        margin-right:0;
+    }
+    .titleArrowBody{
+        width:90%;
+    }
+}
 
 /* =====================================================
     Rating
    ===================================================== */
 .rating{
-    width:200px;
     height: 60px;
     display: inline-table;
     vertical-align: top;
@@ -113,7 +121,13 @@
 .star-rating i ~ i ~ i ~ i ~ i{
     width: 100%;
 }
-
+@media screen and (max-width: 640px){
+    .rating{
+        display: block;
+        text-align: center;
+        margin-top:10px;
+    }
+}
 
 
 /* =====================================================
@@ -125,11 +139,16 @@
     margin-left: 80px;
 }
 .receiptImage{
+    display:block;
     height: 30em;
     border: 7px solid #333;;
     border-radius: 5px;
 }
-
+@media screen and (max-width: 1000px){
+    .receiptImage{
+        margin: 0 auto;
+    }
+}
 
 
 
@@ -139,6 +158,88 @@
 .receiptDescription{
     display: inline-block;
     vertical-align: top;
-    max-width: 60%;
+    max-width: 40%;
     padding: 0 20px;
+    font-size: 1.2em;
+    margin-top:0px;
+}
+
+.receiptDescription h2{
+    margin-top: 0;
+    font-weight: bold;
+}
+
+.receiptDetails{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.receiptDetail{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
+}
+
+@media screen and (max-width: 1500px){
+    .receiptDescription{
+        max-width: 50%;
+    }
+}
+@media screen and (max-width: 1300px){
+    .receiptDescription{
+        max-width: 45%;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .receiptProperties{
+        width: 100%;
+        margin-left: 0;
+    }
+    .receiptProperties img{
+        margin: 0 auto;
+    }
+    .receiptDescription{
+        margin-top: 50px;
+        max-width: none;
+        width: 100%;
+    }
+}
+
+/* =====================================================
+    Images / Icons
+   ===================================================== */
+img.difficult{
+    width:120px;
+    height:120px;
+    background:url("/whattocook/images/Difficulty.png") 0 0 no-repeat;
+    background-size: auto 120px ;
+}
+img.medium{
+    width:120px;
+    height:120px;
+    background:url("/whattocook/images/Difficulty.png") -165px 0 no-repeat;
+    background-size: auto 120px ;
+}
+img.easy{
+    width:120px;
+    height:120px;
+    background:url("/whattocook/images/Difficulty.png") -330px 0 no-repeat;
+    background-size: auto 120px ;
+}
+.duration{
+    width:120px;
+    height:120px;
+    background:url("/whattocook/images/Duration.png") 0 0 no-repeat;
+    background-size: auto 120px ;
+}
+.duration>div{
+    height: 100%;
+    width: 100%;
+    padding-top: 80px;
+    text-align: center;
+}
+.duration span{
+    color:white;
+    font-weight: bold;
 }

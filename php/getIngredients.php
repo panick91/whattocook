@@ -6,7 +6,7 @@
  * Time: 18:09
  */
 
-require_once 'Database\IngredientDatabase.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'\php\Database\IngredientDatabase.php';
 
 $ingredientsDB = new IngredientDatabase();
 

@@ -6,8 +6,7 @@
  * Time: 17:15
  */
 
-
-require_once 'Database\RatingDatabase.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'\php\Database\RatingDatabase.php';
 
 $ratingDB = new RatingDatabase();
 
@@ -23,6 +22,8 @@ if(array_key_exists('rating', $_POST)){
     $rating = $_POST['rating'];
 }
 
-$newRating = $ratingDB->saveRating($rating,$receiptId);
+if($receiptId !== null && $rating !== null){
+    $newRating = $ratingDB->saveRating($rating,$receiptId);
+    echo $newRating->AVG_rating;
+}
 
-echo $newRating->AVG_rating;

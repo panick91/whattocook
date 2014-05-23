@@ -7,8 +7,8 @@
  */
 
 
-require_once 'Database.php';
-require_once 'Model\Receipt.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'\php\Database\Database.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'\php\Model\Receipt.php';
 
 class ReceiptDatabase
 {
@@ -36,6 +36,23 @@ class ReceiptDatabase
 
             /*** fetch into the Ingredient class ***/
             return $stmt->fetchALL(PDO::FETCH_CLASS, 'Receipt');
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    function getReceiptsById($id)
+    {
+        try {
+            /*** The SQL SELECT statement ***/
+            $stmt = $this->db->prepare("SELECT * FROM receipts r WHERE r.receiptId = ?");
+
+            /*** execution ***/
+            $stmt->setFetchMode( PDO::FETCH_CLASS, 'Receipt');
+            if($stmt->execute(array($id))){
+                /*** fetch into class Ingredient ***/
+                return $stmt->fetch();
+            }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

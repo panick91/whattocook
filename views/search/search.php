@@ -5,6 +5,9 @@
  * Date: 06.05.14
  * Time: 09:38
  */
+
+$server_path = $_SERVER['DOCUMENT_ROOT'];
+require_once $server_path.'\php\Database\ReceiptDatabase.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +15,7 @@
     <title>whattocook.ch - Search by ingredients</title>
 
     <!-- Include global stylesheets and scripts -->
-    <?php require_once '/views/shared/references.php'; ?>
+    <?php require_once $server_path.'/views/shared/references.php'; ?>
 
     <!-- local stylesheets and scripts -->
     <link type="text/css" href="css/search.css" rel="stylesheet"/>
@@ -23,7 +26,7 @@
 </head>
 <body>
 
-<?php require_once '/views/shared/navigation.php';?>
+<?php require_once $server_path.'/views/shared/navigation.php';?>
 
 <div class="background"></div>
 <div class="searchArea">

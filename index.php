@@ -6,14 +6,16 @@
  * Time: 10:35
  */
 
+$server_path = $_SERVER['DOCUMENT_ROOT'];
+
 $receiptId = null;
 if (array_key_exists('receiptId', $_GET)) {
     $receiptId = $_GET["receiptId"];
 }
 
 if($receiptId !== NULL){
-    include '/views/receipt/receiptPage.php';
+    include $server_path.'/views/receipt/receiptPage.php';
 }
 else{
-    include '/views/search/search.php';
+    include $server_path.'/views/search/search.php';
 }

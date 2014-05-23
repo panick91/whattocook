@@ -57,6 +57,19 @@ class Receipt implements JsonSerializable{
     }
 
     /**
+     * @return mixed
+     */
+    public function getDifficultyName()
+    {
+        switch($this->difficulty){
+            case 1: return 'easy';
+            case 2: return 'medium';
+            case 3: return 'difficult';
+            default: return '';
+        }
+    }
+
+    /**
      * @return string
      */
     public function getImagePartName()
