@@ -18,6 +18,31 @@ USE `whattocook`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `importantadvices`
+--
+
+DROP TABLE IF EXISTS `importantadvices`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `importantadvices` (
+  `adviceId` int(11) NOT NULL AUTO_INCREMENT,
+  `advice` varchar(255) DEFAULT NULL,
+  `imagePartName` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`adviceId`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `importantadvices`
+--
+
+LOCK TABLES `importantadvices` WRITE;
+/*!40000 ALTER TABLE `importantadvices` DISABLE KEYS */;
+INSERT INTO `importantadvices` VALUES (1,'This menu contains treenuts!','treenut'),(2,'This menu contains dairy!','dairy'),(3,'This menu contains eggs!','egg'),(4,'This menu contains shellfish!','shellfish'),(5,'This menu contains seafood!','seafood'),(6,'This menu contains soy!','soy'),(7,'This menu contains wheat!','wheat'),(8,'This menu contains peanut!','peanut'),(9,'This menu is vegetarian.','vegetarian'),(10,'This menu has little fat.','fat'),(11,'This menu has little calories.','calories'),(12,'This menu is healthy.','healthy'),(13,'This menu is gluten free.','gluten');
+/*!40000 ALTER TABLE `importantadvices` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ingredients`
 --
 
@@ -99,6 +124,35 @@ INSERT INTO `receipts` VALUES (2,'Spaghetti Napoli','Lorem ipsum dolor sit amet,
 UNLOCK TABLES;
 
 --
+-- Table structure for table `receipts2advices`
+--
+
+DROP TABLE IF EXISTS `receipts2advices`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `receipts2advices` (
+  `receipts2advicesId` int(11) NOT NULL AUTO_INCREMENT,
+  `receiptId` int(11) NOT NULL,
+  `adviceId` int(11) NOT NULL,
+  PRIMARY KEY (`receipts2advicesId`),
+  KEY `fk_receipt_receipt2advice_idx` (`receiptId`),
+  KEY `fk_advice_receipt2advice_idx` (`adviceId`),
+  CONSTRAINT `fk_receipt_receipt2advice` FOREIGN KEY (`receiptId`) REFERENCES `receipts` (`receiptId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_advice_receipt2advice` FOREIGN KEY (`adviceId`) REFERENCES `importantadvices` (`adviceId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `receipts2advices`
+--
+
+LOCK TABLES `receipts2advices` WRITE;
+/*!40000 ALTER TABLE `receipts2advices` DISABLE KEYS */;
+INSERT INTO `receipts2advices` VALUES (1,3,2),(2,3,7),(3,2,7),(4,2,9),(5,4,7),(6,2,3),(7,3,3),(8,4,3);
+/*!40000 ALTER TABLE `receipts2advices` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `receipts2ingredients`
 --
 
@@ -136,4 +190,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-23 23:43:26
+-- Dump completed on 2014-05-25 22:27:37

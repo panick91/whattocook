@@ -1,8 +1,10 @@
 <?php
 $server_path = $_SERVER['DOCUMENT_ROOT'];
 require_once $server_path.'\php\Database\ReceiptDatabase.php';
+require_once $server_path.'\php\Database\AdviceDatabase.php';
 
 $receiptDB = new ReceiptDatabase();
+$adviceDB = new AdviceDatabase();
 
 $receiptId = null;
 if (array_key_exists('receiptId', $_GET)) {
@@ -10,8 +12,10 @@ if (array_key_exists('receiptId', $_GET)) {
 }
 
 $receipt = new Receipt();
+$importantAdvices = null;
 if($receiptId !== null){
     $receipt = $receiptDB->getReceiptsById($receiptId);
+    $importantAdvices = $adviceDB->getAdvicesByReceiptId($receiptId);
 }
 
 ?>
