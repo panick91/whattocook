@@ -59,4 +59,24 @@ class RatingDatabase
             echo $e->getMessage();
         }
     }
+
+    function getRatingByReceiptId($receiptId){
+        try {
+            /*** prepare first statement ***/
+            $stmt = $this->db->prepare('SELECT FLOOR(AVG(r.rating)) AS AVG_rating
+                                        FROM ratings r
+                                        WHERE r.receiptId = ?
+                                        GROUP BY r.receiptId;');
+
+
+            /*** execution ***/
+            if($stmt->execute(array($receiptId))){
+                /*** fetch into class Ingredient ***/
+                return $stmt->fetchObject();
+            }
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 } 

@@ -207,26 +207,8 @@
 }
 
 /* =====================================================
-    Images / Icons
+    Duration
    ===================================================== */
-img.difficult{
-    width:120px;
-    height:120px;
-    background:url("/whattocook/images/Difficulty.png") 0 0 no-repeat;
-    background-size: auto 120px ;
-}
-img.medium{
-    width:120px;
-    height:120px;
-    background:url("/whattocook/images/Difficulty.png") -165px 0 no-repeat;
-    background-size: auto 120px ;
-}
-img.easy{
-    width:120px;
-    height:120px;
-    background:url("/whattocook/images/Difficulty.png") -330px 0 no-repeat;
-    background-size: auto 120px ;
-}
 .duration{
     width:120px;
     height:120px;
@@ -242,4 +224,15 @@ img.easy{
 .duration span{
     color:white;
     font-weight: bold;
+}
+
+
+/* =====================================================
+    Important advices
+   ===================================================== */
+.advices{
+    margin-top:70px;
+}
+.advice{
+
 }
