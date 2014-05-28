@@ -35,6 +35,10 @@ $(document).ready(function () {
         }
     );
 
+    $('#ingredientList').droppable({
+        drop:addIngredientToList
+    });
+
 });
 
 function searchReceipts(){
@@ -64,7 +68,7 @@ function addReceiptResults(data){
 
 function addSearchResults(data) {
     if(data.ingredients.length > 0){
-        render("#ingredientsDropdown", '/whattocook/mustache-templates/ingredient.html', 'ingredient', data, addClickEventToSearchResults);
+        render("#ingredientsDropdown", '/whattocook/mustache-templates/ingredient.html', 'ingredient', data, processSearchResults);
     }
     else{
         var placeholderElement =    "<li class='list-group-item'>" +
@@ -85,12 +89,13 @@ function render(target, path, id, data, callback) {
     });
 }
 
-function addClickEventToSearchResults(){
+function processSearchResults(){
     $('.addIngredientToList').click(
         function (e) {
             addIngredientToList(e);
         }
     );
+    $('.ingredient').parent().draggable({revert:true, stack: ".ingredient"});
 }
 
 /*Removes all existing click events of elements with class .removeIngredients
