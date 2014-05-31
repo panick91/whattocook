@@ -11,8 +11,9 @@ $(document).ready(function () {
     $('input[name=searchIngredients]').keyup(
         function () {
             if ($('input[name=searchIngredients]').val().length > 2){
-                searchIngredients();
+                addSearchIndicator();
                 $('#ingredientsProposal').addClass("open");
+                searchIngredients();
             }
             else
                 $('#ingredientsProposal').removeClass("open");
@@ -22,8 +23,9 @@ $(document).ready(function () {
     $('#searchIngredientsButton').click(
         function (event) {
             event.stopPropagation();
-            searchIngredients();
+            addSearchIndicator();
             $('#ingredientsProposal').toggleClass("open");
+            searchIngredients();
             attachClickEventToDocument();
         });
 
@@ -36,10 +38,32 @@ $(document).ready(function () {
     );
 
     $('#ingredientList').droppable({
-        drop:addIngredientToList
+        activeClass:"emphasize",
+        activate:function(event,ui){toggleDropZone(true)},
+        deactivate:function(event,ui){toggleDropZone(false)},
+        drop:dropIngredientToList
     });
 
 });
+
+function toggleDropZone(enable){
+    if(enable){
+        $('#noIngredients').hide();
+        $('#dropZone').show();
+    }
+    else{
+        $('#noIngredients').show();
+        $('#dropZone').hide();
+    }
+}
+
+function addSearchIndicator(){
+    $('#ingredientsDropdown').html('<li class="list-group-item">'+
+                                        '<div class="ingredient" data-ingredientid="{{ingredientId}}">'+
+                                            '<span class="ingredientName">Searching...</span>'+
+                                        '</div>'+
+                                    '</li>');
+}
 
 function searchReceipts(){
     var parameters = {
@@ -92,7 +116,7 @@ function render(target, path, id, data, callback) {
 function processSearchResults(){
     $('.addIngredientToList').click(
         function (e) {
-            addIngredientToList(e);
+            sendIngredientToList(e);
         }
     );
     $('.ingredient').parent().draggable({revert:true, stack: ".ingredient"});
@@ -128,8 +152,24 @@ function attachClickEventToDocument(){
 
 }
 
-function addIngredientToList(event) {
+function dropIngredientToList(event, ui){
+    var ingredient = ui.draggable.children();
+    addIngredientToList(ingredient);
+
+    //remove selected ingredient
+    ingredient.parent().remove();
+}
+
+function sendIngredientToList(event){
     var ingredient = $(event.target).parent();
+    addIngredientToList(ingredient);
+
+    //remove selected ingredient
+    ingredient.parent().remove();
+}
+
+function addIngredientToList(ingredient) {
+
 
     //get data
     var ingredientName = ingredient.find('.ingredientName').html();
@@ -156,8 +196,6 @@ function addIngredientToList(event) {
     //update counter
     $('#ingredientsHeaderTitle').html("Your ingredients: " + ++ingredientsCounter);
 
-    //remove selected ingredient
-    $(event.target).parent().parent().remove();
 }
 
 function removeIngredientFromList(event){
@@ -173,7 +211,8 @@ function removeIngredientFromList(event){
 
         var element =   "<li class='list-group-item'>" +
                             "<div class='ingredientPlaceholder'>" +
-                                "<span>No ingredients added yet!</span>" +
+                                "<span id='noIngredients'>No ingredients added yet!</span>" +
+                                "<span id='dropZone'>Drop ingredient here</span>" +
                             "</div>" +
                         "</li>";
 

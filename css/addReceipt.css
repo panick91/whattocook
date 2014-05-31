@@ -1,0 +1,94 @@
+/* =====================================================
+    General
+   ===================================================== */
+.formContainer{
+    position:relative;
+    padding:00px 0 50px 0;
+}
+
+.formBackgroundLayer{
+    background-color: rgba(255,255,255,0.9);
+    padding:30px 0;
+}
+
+
+/* =====================================================
+    Position indication
+   ===================================================== */
+.positionIndicator{
+    margin-bottom: 10px;
+}
+.positionIndicator>h2{
+    margin:0 0 0 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.arrow{
+    display: inline-block;
+    vertical-align: middle;
+}
+.arrow > .arrowBody{
+    display: inline-block;
+    height:60px;
+    width:60px;
+    margin:0px;
+    background-color: #333;
+}
+.arrow > .arrowBody > label{
+    margin:10px 0px 0px 20px;
+    float:left;
+    font-weight: bold;
+    font-size:30px;
+    color:white;
+}
+.arrow > .arrowHead{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left:-4px;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 30px solid #333;
+}
+
+/* =====================================================
+    Form
+   ===================================================== */
+#addReceiptForm{
+    width: 50%;
+}
+.inputContainer{
+    margin-left: 100px;
+}
+.inputContainer>div{
+    width: 100%;
+    margin-bottom: 20px;
+}
+#difficulty{
+    width:200px !important;
+}
+#duration{
+    width:300px !important;
+}
+
+/* =====================================================
+    Rich Text editor
+   ===================================================== */
+#instruction>iframe{
+    height: 300px !important;
+}
+
+/* =====================================================
+    Submit
+   ===================================================== */
+#submitIndicator{
+    display: inline-block;
+    margin-top:100px;
+}
+#submit{
+    display: inline-block;
+    width: 300px;
+    height:60px;
+    margin-left:10px;
+    font-size: 18px;
+}

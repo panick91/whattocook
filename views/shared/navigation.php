@@ -24,6 +24,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class=""><a href="/whattocook">Receipts by ingredients</a></li>
+                <li class=""><a href="/whattocook/?intend=addReceipt">Add a new receipt</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

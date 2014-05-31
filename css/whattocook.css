@@ -26,7 +26,8 @@ body{
 .btn ,
 .receiptDescription,
 .receiptDetails,
-.duration span
+.duration span,
+.positionIndicator>h2
 {
     font-family: 'Open Sans', sans-serif !important;
 }

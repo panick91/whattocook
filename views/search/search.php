@@ -65,7 +65,8 @@ require_once $server_path.'\php\Database\ReceiptDatabase.php';
             <ul id="ingredientList" class="list-group">
                 <li class='list-group-item'>
                     <div class='ingredientPlaceholder'>
-                        <span>No ingredients added yet!</span>
+                        <span id="noIngredients">No ingredients added yet!</span>
+                        <span id="dropZone">Drop ingredient here</span>
                    </div>
                 </li>
             </ul>

@@ -17,6 +17,46 @@ class Receipt implements JsonSerializable{
     private $score;
 
     /**
+     * @param mixed $difficulty
+     */
+    public function setDifficulty($difficulty)
+    {
+        $this->difficulty = $difficulty;
+    }
+
+    /**
+     * @param mixed $duration
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+    }
+
+    /**
+     * @param mixed $imagePartName
+     */
+    public function setImagePartName($imagePartName)
+    {
+        $this->imagePartName = $imagePartName;
+    }
+
+    /**
+     * @param mixed $instructions
+     */
+    public function setInstructions($instructions)
+    {
+        $this->instructions = $instructions;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
      * @return mixed
      */
     public function getReceiptId()

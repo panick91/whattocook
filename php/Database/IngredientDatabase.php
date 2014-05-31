@@ -9,6 +9,11 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'\php\Database\Database.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'\php\Model\Ingredient.php';
 
+/*
+require_once 'Database\Database.php';
+require_once 'Model\Ingredient.php';
+*/
+
 class IngredientDatabase {
 
 

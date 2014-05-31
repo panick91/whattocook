@@ -7,8 +7,8 @@
  */
 
 
-require_once $_SERVER['DOCUMENT_ROOT'].'\php\Database\Database.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'\php\Model\Receipt.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '\php\Database\Database.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '\php\Model\Receipt.php';
 
 class ReceiptDatabase
 {
@@ -41,6 +41,37 @@ class ReceiptDatabase
         }
     }
 
+    function saveReceipt($receipt)
+    {
+        try {
+            /*** The SQL SELECT statement ***/
+            $stmt = $this->db->prepare("INSERT INTO receipts (name,instructions,difficulty,imagePartName,duration)
+                                        SELECT ?,?,?,?,?");
+
+            $receiptName = $receipt->getName();
+            $receiptInstructions = $receipt->getInstructions();
+            $receiptDifficulty = $receipt->getDifficulty();
+            $receiptImage = $receipt->getImagePartName();
+            $receiptDuration = $receipt->getDurration();
+
+            if($receiptImage === ''){
+                $receiptImage = 'Placeholder';
+            }
+
+            $stmt->bindParam(1, $receiptName, PDO::PARAM_STR);
+            $stmt->bindParam(2, $receiptInstructions, PDO::PARAM_STR);
+            $stmt->bindParam(3, $receiptDifficulty, PDO::PARAM_STR);
+            $stmt->bindParam(4, $receiptImage, PDO::PARAM_STR);
+            $stmt->bindParam(5, $receiptDuration, PDO::PARAM_STR);
+
+            /*** execution ***/
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     function getReceiptsById($id)
     {
         try {
@@ -48,8 +79,8 @@ class ReceiptDatabase
             $stmt = $this->db->prepare("SELECT * FROM receipts r WHERE r.receiptId = ?");
 
             /*** execution ***/
-            $stmt->setFetchMode( PDO::FETCH_CLASS, 'Receipt');
-            if($stmt->execute(array($id))){
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Receipt');
+            if ($stmt->execute(array($id))) {
                 /*** fetch into class Ingredient ***/
                 return $stmt->fetch();
             }
@@ -68,7 +99,7 @@ class ReceiptDatabase
                 $stmt = $this->db->prepare("SELECT r.receiptId, r.name,r.instructions,r.duration,r.difficulty,r.imagePartName,IFNULL( (COUNT(r2i.ingredientId)/r2.numberOfIngredients) , 0) AS score
                                             FROM receipts r
                                                 INNER JOIN receipts2ingredients r2i ON r2i.receiptId = r.receiptId
-                                                INNER JOIN (". $subSelect .") AS i ON r2i.ingredientId = i.ingredientId
+                                                INNER JOIN (" . $subSelect . ") AS i ON r2i.ingredientId = i.ingredientId
                                                 INNER JOIN (SELECT r2i.receiptId, COUNT(r2i.ingredientId) AS numberOfIngredients FROM receipts2ingredients r2i GROUP BY r2i.receiptId)  AS r2 ON r2.receiptId = r.receiptId
                                             GROUP BY r.receiptId, r.name
                                             ORDER BY score DESC, r.name ASC;");
@@ -79,7 +110,7 @@ class ReceiptDatabase
                             LIMIT 100;");
             }
 
-            if($stmt->execute()){
+            if ($stmt->execute()) {
                 return $stmt->fetchALL(PDO::FETCH_CLASS, 'Receipt');
             }
 
@@ -109,7 +140,8 @@ class ReceiptDatabase
             }
         }
 
-        return $subSelectString;    }
+        return $subSelectString;
+    }
 
     function getReceiptsArray($receipt)
     {

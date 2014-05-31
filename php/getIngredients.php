@@ -7,6 +7,7 @@
  */
 
 require_once $_SERVER['DOCUMENT_ROOT'].'\php\Database\IngredientDatabase.php';
+//require_once 'Database\IngredientDatabase.php';
 
 $ingredientsDB = new IngredientDatabase();
 
@@ -47,10 +48,11 @@ if (is_string($searchText)) {
 
 function filterIngredients($yourIngredients, $searchResults)
 {
-    //$yourIngredients = [1,2,3];
+    //$yourIngredients = [4,2,1];
 
     if ($yourIngredients != null) {
-        for ($index = 0; $index < count($searchResults['ingredients']); $index++) {
+        $searchCount = count($searchResults['ingredients']);
+        for ($index = 0; $index < $searchCount; $index++) {
 
             if ((array_search($searchResults['ingredients'][$index]->getIngredientId(), $yourIngredients)) !== false) {
                 unset($searchResults['ingredients'][$index]);
