@@ -31,11 +31,11 @@
     display: inline-block;
     height:60px;
     width:60px;
-    margin:0px;
+    margin:0;
     background-color: #333;
 }
 .arrow > .arrowBody > label{
-    margin:10px 0px 0px 20px;
+    margin:10px 0 0 20px;
     float:left;
     font-weight: bold;
     font-size:30px;
@@ -49,6 +49,28 @@
     border-top: 30px solid transparent;
     border-bottom: 30px solid transparent;
     border-left: 30px solid #333;
+}
+@media screen and (max-width: 450px){
+    .arrow > .arrowBody{
+        height:30px;
+        width:30px;
+    }
+
+    .arrow > .arrowBody > label{
+        margin:2px 0 0 10px;
+        font-size:20px;
+    }
+
+    .arrow > .arrowHead{
+        margin-left:-4px;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid #333;
+    }
+
+    .positionIndicator>h2{
+        font-size: 20px;
+    }
 }
 
 /* =====================================================
@@ -69,6 +91,16 @@
 }
 #duration{
     width:300px !important;
+}
+@media screen and (max-width: 950px){
+    #addReceiptForm{
+        width: 95%;
+    }
+}
+@media screen and (max-width: 450px){
+    .inputContainer{
+        margin-left: 20px;
+    }
 }
 
 /* =====================================================
@@ -91,4 +123,10 @@
     height:60px;
     margin-left:10px;
     font-size: 18px;
+}
+@media screen and (max-width: 450px){
+    #submit{
+        width: 200px;
+        height:50px;
+    }
 }
