@@ -4,9 +4,23 @@
 
 
 var ingredientsCounter = 0;
-var yourIngredients = [];
 
 $(document).ready(function () {
+
+    // Get stored ingredients from local storage
+    if(localStorage.length > 0){
+        $('#ingredientList').empty();
+
+        for(i = 0; i < localStorage.length; i++){
+            $('#ingredientList').append(localStorage.getItem(localStorage.key(i)));
+
+            //update counter
+            $('#ingredientsHeaderTitle').html("Your ingredients: " + ++ingredientsCounter);
+        }
+
+        // Attach click event to added ingredients
+        addClickEventToYourIngredients();
+    }
 
     $('input[name=searchIngredients]').keyup(
         function () {
@@ -66,8 +80,15 @@ function addSearchIndicator(){
 }
 
 function searchReceipts(){
+    var yourIngredientIds = [];
+
+    // get all keys from localstorage
+    for(i = 0; i < localStorage.length; i++){
+        yourIngredientIds.push(localStorage.key(i));
+    }
+
     var parameters = {
-        ingredients: yourIngredients
+        ingredients: yourIngredientIds
     };
     $.post("/whattocook/php/getReceipts.php",
     parameters,
@@ -75,10 +96,18 @@ function searchReceipts(){
 }
 
 function searchIngredients(){
+
+    var yourIngredientIds = [];
+
+    // get all keys from localstorage
+    for(i = 0; i < localStorage.length; i++){
+        yourIngredientIds.push(localStorage.key(i));
+    }
+
     //var searchString = $('input[name=searchIngredients]').val();
     var parameters = {
         searchText: $('input[name=searchIngredients]').val(),
-        ingredients: yourIngredients
+        ingredients: yourIngredientIds
     };
     $.post("/whattocook/php/getIngredients.php",
     parameters,
@@ -189,7 +218,7 @@ function addIngredientToList(ingredient) {
         $('#ingredientList').empty();
     }
     $('#ingredientList').append(newElement);
-    yourIngredients.push(ingredientId);
+    localStorage.setItem(ingredientId, newElement);
 
     addClickEventToYourIngredients();
 
@@ -200,10 +229,9 @@ function addIngredientToList(ingredient) {
 
 function removeIngredientFromList(event){
     var ingredientId = $(event.target).parent().attr('data-ingredientid');
-    var index = yourIngredients.indexOf(ingredientId);
 
-    if(index > -1){
-        yourIngredients.splice(index,1);
+    if(localStorage.getItem(ingredientId)!== null){
+        localStorage.removeItem(ingredientId);
     }
 
     $(event.target).parent().parent().remove();
